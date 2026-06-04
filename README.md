@@ -1,54 +1,39 @@
 # AI vs Human marketing content Consumer perception analysis
-A data driven evaluation of generative AI's role in visual marketing content creation
+A data driven evaluation of generative AI's role in visual marketing content creation. 
 
-## Background and Overview
-Marketing teams are rapidly adopting generative AI for content creation, with industry adoption surging from 9% (2024) to 41% (2025), and an additional 27% experimenting with AI tools. Major brands including Coca-Cola, Nike, and Rhode have already embedded AI-generated visuals into active campaigns. However, 62% of firms are prioritizing cost and time savings over content effectiveness, creating a critical gap: How do consumers actually perceive AI-generated marketing content compared to human-created content?
+## Overview: 
+This project examines whether generative AI marketing imagery can match human created imagery in shaping consumer perception. Five AI generated marketing images were paired with five human created brand images and evaluated through a blind survey measuring quality, realism, and visual appeal. The repository contains the analysis of the resulting 7,470 ratings.
 
-This project analyzes consumer perception across quality, realism, aesthetics, and marketing effectiveness to answer a strategic question facing marketing teams today: Where should AI be deployed, and where does human creativity remain essential?
-The analysis evaluates 10 marketing images (5 AI-generated, 5 human-created) from premium brands including Prada, Nike, Chanel, Dyson, Rhode, and Ferrari, collecting 7,470 individual ratings from 83 respondents across 9 perception dimensions. The dataset includes demographic segmentation (age, gender, AI familiarity, social media usage) to identify how different consumer groups evaluate AI content.
+## Research question: 
+Marketing teams are adopting generative AI to produce visual content at scale, yet relatively few are measuring how audiences actually respond to it. This study tests the question directly: respondents rated AI and human images without being told which was which, allowing a llike for like comparison of perception and an assessment of whether viewers can distinguish between the two.
 
-## Key areas analyzed:
-1. Perception metrics: Quality, realism, aesthetics across AI vs human images
-2. Age segmentation: How different age groups (18-24, 25-34, 35-44, 45-54, 55+) perceive AI realism
-3. Detection accuracy: Can consumers distinguish AI from human content?
-4. Marketing effectiveness: Performance across clarity, interest, attraction, and attention
-5. AI familiarity impact: Does exposure to AI tools change perception?
+## Data: 
+1. 83 respondents, 10 images, 9 rating dimensions per image — 7,470 individual ratings in total
+2. 5 AI generated images created using CHATGPT and Google Nano Banana and 5 human created brand images
+3. 7 point Likert scale, supplemented by paired choice questions and demographic variables (age, gender, education, AI familiarity, social media usage)
+4. Collected via a Microsoft Forms survey
 
-## Data Structure Overview
-The dataset consists of three primary components:
-1. Survey Response Data
-- 83 respondents providing 7,470 total ratings
-- 10 images evaluated (5 AI-generated, 5 human-created)
-- 9 perception dimensions per image (7-point Likert scale)
+## Method:
+1. Built in Python (pandas, numpy, matplotlib, seaborn, plotly) within Jupyter.
+2. The raw Microsoft Forms export required substantial preparation: personally identifiable and metadata fields were removed, inconsistent category labels were standardised, and free text Likert responses such as 1 (strongly disagree) were parsed into numeric values. The dataset was then reshaped into long format, one row per rating so that results could be aggregated flexibly across images, dimensions, and demographic groups.
+3. The analysis proceeded from descriptive statistics (overall, by dimension, and by image) to comparative analysis of AI versus human imagery across dimensions, age groups, AI familiarity levels, and the paired choice questions. A heatmap of image by dimension performance, a ranking of evaluation dimensions, and an interquartile range outlier check which confirmed a stable distribution with no significant outliers, complete the analysis.
 
-2. Image Metadata
-- Image type (AI vs Human)
-- Brand source (Instagram campaigns)
-- AI generation tool (ChatGPT DALL-E 3, Google Gemini)
-- Visual category (product-focused, lifestyle, text-heavy ads)
+## Findings: 
+1. AI imagery performs strongly on technical execution, professional production (5.33), clarity of detail (5.30), and overall quality (5.27) but scores lowest on realism (4.43) and natural appearance (4.51). Realism is the consistent weak point.
+2. The highest and lowest rated images were a mix of AI and human origin, indicating that the quality of the individual asset is a stronger determinant of perception than whether it was AI or human produced.
+3. Respondents could not reliably distinguish AI from human images. Human images were rated marginally more realistic, but identification accuracy sat close to chance.
+4. Respondents with greater AI familiarity rated the two image types more similarly, suggesting the perception gap narrows as exposure to AI content increases.
 
-3. Respondent Demographics
-- Age group (Under 18, 18-24, 25-34, 35-44, 45-54, 55+)
-- Gender (Female 49.4%, Male 47.0%, Undisclosed 3.6%)
-- Education level (65.1% university-educated)
-- AI tool familiarity (90.4% familiar)
-- Social media usage frequency (95.2% frequent users)
+In summary, AI imagery is well suited to clean, product led content, while human imagery retains an advantage in realism and people led contexts.
 
-Sample Bias Note: 70%+ of respondents aged 18-24 creates a skew toward younger, digitally native consumers. Findings are most applicable to Gen Z and Millennial marketing strategies.
+## Why this matters for media and entertainment platforms: 
+This study measures static, AI generated imagery, which is in many respects the inverse of live, real time content, and that contrast is what makes its findings relevant to a platform built around the latter. The central result is that generative AI has largely closed the gap on polish and technical execution but not on realism and authenticity, with human content retaining its clearest advantage precisely where an image needs to feel genuine. Live content represents the strongest form of that advantage, being unscripted, unedited, and verifiably human in a way synthetic media cannot replicate. This carries a direct implication for content strategy. As feeds fill with AI generated material that viewers cannot reliably distinguish from the real thing, authenticity ceases to be a baseline that every piece of content possesses and instead becomes a scarce and therefore more valuable quality. Because the dimensions on which AI underperforms in this study are the same ones that define a live format, the proliferation of synthetic content can reasonably be read as a tailwind for real-time content rather than a threat to it, and the case for positioning live features as the authentic alternative is one these findings support rather than merely assert. Two further results bear on how such a strategy would be executed. The first is that perception was not uniform across the sample but varied with both age and familiarity with AI, which implies that any effort to drive awareness or adoption of a feature among creators and audiences should be segmented along those lines rather than delivered as a single undifferentiated message. The second is that perceived performance tracked the quality of the individual asset far more closely than its category of origin, which makes the case for evaluating content and features through measured metrics and user feedback rather than assumptions about what ought to perform well, reflecting the same test-and-learn discipline on which sound product and go to market decisions rely.
 
-## Executive Summary
-After analyzing consumer perception across 7,470 ratings, the data reveals a strategic deployment opportunity rather than a replacement scenario:
+## Limitations: 
 
-AI-generated images excel at clarity and effectiveness (commercial effectiveness +74.7%, message clarity +84.3%) but fall behind on realism and emotional engagement. Human-created images drive stronger interest and attraction (customer interest +63.8%, customer attraction +85.5%) and are perceived as 13.6% more realistic overall.
+1. The survey did not ask respondents to classify each image as AI or human generated, thus the detection ability was estimated indirectly from realism ratings, a defensible proxy, but not a direct measure. A future iteration would include an explicit classification question.
+2. The sample skews toward respondents aged 18–24 with existing AI familiarity: findings generalise most reliably to younger, digitally native audiences and likely overstate AI acceptance among older segments.
+3. The raw survey export contained mixed text and numeric responses, irregular spacing, and inconsistent demographic labels; data cleaning accounted for a significant share of the work.
 
-The most striking finding: Consumers struggle to distinguish AI from human content, with detection accuracy ranging from 47.3% to 60.0% (near-chance performance). This suggests the quality gap has narrowed significantly - but the engagement gap remains.
-Age significantly impacts perception: Younger audiences (under 18) are most skeptical of AI realism (+13.9% gap favoring human), while mid-career professionals (35-44) actually rate AI images as more realistic than human content (-4.5% gap). Older audiences (55+) see no perceptual difference (4.50 vs 4.50).
-
-Business implication: AI should be deployed for high-volume performance marketing (ads, A/B testing, rapid iteration) where clarity and message delivery matter most. Human creativity remains essential for brand building and emotional storytelling where authenticity and connection drive long-term value.
-
-## Insights Deep Dive
-Finding 1: Visual quality is strong, but realism is where AI falls behind
-AI-generated images maintain consistently high scores for quality and aesthetics (mean ~5.6-5.7 across top performers), with only a 12.2% variance across all images. However, realism fluctuates dramatically (range: 3.5-5.3), with some images showing a 38.6% drop below peak quality scores.
-What this means: AI can produce visually polished content that looks "high-quality" to consumers, but struggles with photorealistic details that signal authenticity. Images 2, 3, 6-8 showed the widest quality-to-realism gaps, particularly in human-centric visuals (faces, hands, body proportions).
-Marketing application: Use AI for product-focused visuals where realism is less critical (packaged goods, abstract concepts, graphic design). Reserve human photography for lifestyle and influencer content where realism drives trust.
-
+## Note: 
+This project originated as a Retail and Marketing Analytics coursework assignment at Imperial College London. The survey distribution, data preparation, and Python analysis presented here are my own work.
